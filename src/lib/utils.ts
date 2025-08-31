@@ -1,6 +1,17 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { APP_BUTTON_TEXT, APP_DESCRIPTION, APP_ICON_URL, APP_NAME, APP_OG_IMAGE_URL, APP_PRIMARY_CATEGORY, APP_SPLASH_BACKGROUND_COLOR, APP_TAGS, APP_URL, APP_WEBHOOK_URL } from './constants';
+import {
+  APP_BUTTON_TEXT,
+  APP_DESCRIPTION,
+  APP_ICON_URL,
+  APP_NAME,
+  APP_OG_IMAGE_URL,
+  APP_PRIMARY_CATEGORY,
+  APP_SPLASH_BACKGROUND_COLOR,
+  APP_TAGS,
+  APP_URL,
+  APP_WEBHOOK_URL,
+} from './constants';
 import { APP_SPLASH_URL } from './constants';
 
 interface FrameMetadata {
@@ -16,7 +27,7 @@ interface FrameMetadata {
   description?: string;
   primaryCategory?: string;
   tags?: string[];
-};
+}
 
 interface FrameManifest {
   accountAssociation?: {
@@ -33,12 +44,12 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getFrameEmbedMetadata(ogImageUrl?: string) {
   return {
-    version: "next",
+    version: 'next',
     imageUrl: ogImageUrl ?? APP_OG_IMAGE_URL,
     button: {
       title: APP_BUTTON_TEXT,
       action: {
-        type: "launch_frame",
+        type: 'launch_frame',
         name: APP_NAME,
         url: APP_URL,
         splashImageUrl: APP_SPLASH_URL,
@@ -65,15 +76,15 @@ export async function getFarcasterMetadata(): Promise<FrameManifest> {
     accountAssociation: {
       header: process.env.ACCOUNT_ASSOCIATION_HEADER!,
       payload: process.env.ACCOUNT_ASSOCIATION_PAYLOAD!,
-      signature: process.env.ACCOUNT_ASSOCIATION_SIGNATURE!
+      signature: process.env.ACCOUNT_ASSOCIATION_SIGNATURE!,
     },
     frame: {
-      version: "1",
-      name: APP_NAME ?? "Frames v2 Demo",
+      version: '1',
+      name: APP_NAME ?? 'Frames v2 Demo',
       iconUrl: APP_ICON_URL,
       homeUrl: APP_URL,
       imageUrl: APP_OG_IMAGE_URL,
-      buttonTitle: APP_BUTTON_TEXT ?? "Launch Frame",
+      buttonTitle: APP_BUTTON_TEXT ?? 'Launch Frame',
       splashImageUrl: APP_SPLASH_URL,
       splashBackgroundColor: APP_SPLASH_BACKGROUND_COLOR,
       webhookUrl: APP_WEBHOOK_URL,
